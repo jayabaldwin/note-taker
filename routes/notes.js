@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, readAndAppend, readAndDelete } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
 
 // GET Route for retrieving all the tips
@@ -25,6 +25,11 @@ router.post('/', (req, res) => {
   } else {
     res.error('Error in adding note');
   }
+});
+
+router.delete('/:id', (req, res) => {
+  readAndDelete(req.params.id, "./db/db.json");
+  res.json("Note deleted!");
 });
 
 module.exports = router;
