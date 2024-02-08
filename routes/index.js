@@ -1,6 +1,7 @@
+// Creates router object on the imported express module
 const router = require('express').Router();
 
-// Import our modular routers for /tips and /feedback
+// Imports modular routers for /notes
 const notesRouter = require('./notes');
 
 router.use('/notes', notesRouter);
